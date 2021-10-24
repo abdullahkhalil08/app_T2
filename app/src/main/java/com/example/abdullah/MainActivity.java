@@ -33,5 +33,42 @@ import org.json.JSONObject;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        question=findViewById(R.id.textView);
+        ok=findViewById(R.id.ok);
+        wrong=findViewById(R.id.wrong);
+        win=findViewById(R.id.textView3);
+        question.setText(quest[i]);
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(i<quest.length){
+                    question.setText(quest[i]);
+                    if(answers[i]){
+                        score++;
+                    }
+                    i++;
+                }
+                if(i==quest.length){
+                    win.setText("Your Score is: "+score);
+                }
+            }
+        });
+        wrong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(i<quest.length){
+                    question.setText(quest[i]);
+                    if(!answers[i]){
+                        score++;
+                    }
+                    i++;
+                }
+                if(i==quest.length){
+                    win.setText("Your Score is: "+score);
+                }
+
+            }
+        });
     }
-}
+    }
